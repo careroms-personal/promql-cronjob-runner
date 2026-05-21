@@ -1,0 +1,121 @@
+servers:
+- id: sandbox_prometheus
+  url: http://localhost:9090
+  api: api/v1
+  timeout: 30
+  auth:
+    type: none
+  headers: {}
+pipelines:
+- id: node_cpu_rate_query_10m_windows_size__node_cpu_usage_rate_10m__7d_4_1m
+  metadata:
+    cluster_name: sandbox_cluster
+    environment: sandbox
+  promql_config:
+    id: node_cpu_usage_rate_10m
+    expr: rate(node_cpu_seconds_total{job="node-exporter", mode!="idle"}[10m])
+    export_labels:
+    - instance
+  range_config:
+    id: 7d_4_1m
+    backward_amt: 7d
+    backward_steps: 4
+    query_step: 1m
+- id: node_cpu_rate_query_10m_windows_size__node_cpu_usage_rate_10m__7d_4_5m
+  metadata:
+    cluster_name: sandbox_cluster
+    environment: sandbox
+  promql_config:
+    id: node_cpu_usage_rate_10m
+    expr: rate(node_cpu_seconds_total{job="node-exporter", mode!="idle"}[10m])
+    export_labels:
+    - instance
+  range_config:
+    id: 7d_4_5m
+    backward_amt: 7d
+    backward_steps: 4
+    query_step: 5m
+- id: node_cpu_rate_query_120m_windows_size__node_cpu_usage_rate_120m__7d_4_30m
+  metadata:
+    cluster_name: sandbox_cluster
+    environment: sandbox
+  promql_config:
+    id: node_cpu_usage_rate_120m
+    expr: rate(node_cpu_seconds_total{job="node-exporter", mode!="idle"}[120m])
+    export_labels:
+    - instance
+  range_config:
+    id: 7d_4_30m
+    backward_amt: 7d
+    backward_steps: 4
+    query_step: 30m
+- id: node_cpu_rate_query_120m_windows_size__node_cpu_usage_rate_120m__7d_4_60m
+  metadata:
+    cluster_name: sandbox_cluster
+    environment: sandbox
+  promql_config:
+    id: node_cpu_usage_rate_120m
+    expr: rate(node_cpu_seconds_total{job="node-exporter", mode!="idle"}[120m])
+    export_labels:
+    - instance
+  range_config:
+    id: 7d_4_60m
+    backward_amt: 7d
+    backward_steps: 4
+    query_step: 60m
+- id: node_memory_active_usage__node_memory_usage__7d_4_1m
+  metadata:
+    cluster_name: sandbox_cluster
+    environment: sandbox
+  promql_config:
+    id: node_memory_usage
+    expr: node_memory_Active_bytes{job="node_exporter"}
+    export_labels:
+    - instance
+  range_config:
+    id: 7d_4_1m
+    backward_amt: 7d
+    backward_steps: 4
+    query_step: 1m
+- id: node_memory_active_usage__node_memory_usage__7d_4_5m
+  metadata:
+    cluster_name: sandbox_cluster
+    environment: sandbox
+  promql_config:
+    id: node_memory_usage
+    expr: node_memory_Active_bytes{job="node_exporter"}
+    export_labels:
+    - instance
+  range_config:
+    id: 7d_4_5m
+    backward_amt: 7d
+    backward_steps: 4
+    query_step: 5m
+- id: node_memory_active_usage__node_memory_usage__7d_4_30m
+  metadata:
+    cluster_name: sandbox_cluster
+    environment: sandbox
+  promql_config:
+    id: node_memory_usage
+    expr: node_memory_Active_bytes{job="node_exporter"}
+    export_labels:
+    - instance
+  range_config:
+    id: 7d_4_30m
+    backward_amt: 7d
+    backward_steps: 4
+    query_step: 30m
+- id: node_memory_active_usage__node_memory_usage__7d_4_60m
+  metadata:
+    cluster_name: sandbox_cluster
+    environment: sandbox
+  promql_config:
+    id: node_memory_usage
+    expr: node_memory_Active_bytes{job="node_exporter"}
+    export_labels:
+    - instance
+  range_config:
+    id: 7d_4_60m
+    backward_amt: 7d
+    backward_steps: 4
+    query_step: 60m
