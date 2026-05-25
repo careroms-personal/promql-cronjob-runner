@@ -43,9 +43,10 @@ def main():
       
     except Exception as e:
       print(f"❌ unexpected error: server={server_id} pipeline={pipeline_id} error={e}")
-
+  
   write_results(conn, all_results)
   write_failures(conn, all_failures)
+
   # Phase 3 - Teardown
   print("teardown...")
 

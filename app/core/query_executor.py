@@ -95,6 +95,11 @@ def _query_range(
       results.append(QueryResult(
         pipeline_id=pipeline.id,
         server_id=server.server_id,
+        range_id=range_config.id,
+        start_ts=range_config.start,
+        end_ts=range_config.end,
+        step=range_config.step,
+        expr=pipeline.query.expr,
         ts=int(ts),
         value=float(value),
         labels=labels,

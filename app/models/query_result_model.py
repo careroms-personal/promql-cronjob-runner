@@ -3,6 +3,11 @@ from pydantic import BaseModel
 class QueryResult(BaseModel):
   pipeline_id: str
   server_id: str
+  range_id: str
+  start_ts: int
+  end_ts: int
+  step: str
+  expr: str
   ts: int
   value: float
   labels: dict

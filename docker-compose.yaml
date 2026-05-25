@@ -12,5 +12,21 @@ services:
       - timescaledb_data:/var/lib/postgresql/data
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
 
+  promql-cronjob-runner:
+    build: .
+    container_name: promql-cronjob-runner
+    depends_on:
+      - timescaledb
+    environment:
+      TRIGGER_TIME: "2026-05-20T10:00:00+00:00"
+      PIPELINE_CONFIG_PATH: /app/config/sandbox_prometheus_query_pipeline.yaml
+      POSTGRES_HOST: timescaledb
+      POSTGRES_PORT: 5432
+      POSTGRES_USERNAME: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DATABASE: sre_metrics
+    volumes:
+      - ./config:/app/config
+
 volumes:
   timescaledb_data:

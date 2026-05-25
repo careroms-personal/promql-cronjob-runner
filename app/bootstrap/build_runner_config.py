@@ -49,6 +49,7 @@ def _build_runner_server(server_config: ServerConfig):
     server_id = server_config.id,
     session   = session,
     url       = server_config.url,
+    api       = server_config.api,
     timeout   = server_config.timeout,
   )
 

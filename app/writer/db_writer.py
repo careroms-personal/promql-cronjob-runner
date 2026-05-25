@@ -9,7 +9,7 @@ def _get_connection():
   import os
   return psycopg2.connect(
     host     = os.environ.get("POSTGRES_HOST"),
-    port     = os.environ.get("POSTGRES_PORT", 45432),
+    port     = os.environ.get("POSTGRES_PORT", 5432),
     user     = os.environ.get("POSTGRES_USERNAME"),
     password = os.environ.get("POSTGRES_PASSWORD"),
     dbname   = os.environ.get("POSTGRES_DATABASE"),
@@ -23,13 +23,22 @@ def write_results(conn, results: list[QueryResult]) -> None:
     for row in results:
       cur.execute(
         """
-        INSERT INTO pipeline_metrics (ts, pipeline_id, server_id, value, labels)
-        VALUES (%s, %s, %s, %s, %s)
+        INSERT INTO pipeline_metrics (
+          ts, pipeline_id, server_id, range_id,
+          start_ts, end_ts, step, expr,
+          value, labels
+        )
+        VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
         """,
         (
           datetime.fromtimestamp(row.ts, tz=timezone.utc),
           row.pipeline_id,
           row.server_id,
+          row.range_id,
+          row.start_ts,
+          row.end_ts,
+          row.step,
+          row.expr,
           row.value,
           json.dumps(row.labels),
         )

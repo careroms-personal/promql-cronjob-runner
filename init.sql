@@ -5,6 +5,11 @@ CREATE TABLE IF NOT EXISTS pipeline_metrics (
   ts          TIMESTAMPTZ   NOT NULL,
   pipeline_id TEXT          NOT NULL,
   server_id   TEXT          NOT NULL,
+  range_id    TEXT          NOT NULL,
+  start_ts    BIGINT        NOT NULL,
+  end_ts      BIGINT        NOT NULL,
+  step        TEXT          NOT NULL,
+  expr        TEXT          NOT NULL,
   value       DOUBLE PRECISION NOT NULL,
   labels      JSONB
 );

@@ -10,6 +10,7 @@ class RunnerServerConfig(CustomBaseModel):
   session: Session
 
   url: str
+  api: str
   timeout: int
 
 class RunnerRangeConfig(CustomBaseModel):

@@ -1,0 +1,15 @@
+$env:PIPELINE_CONFIG_PATH = "C:\Users\ASUS\Projects\promql-cronjob-runner\tests\sandbox_prometheus_query_pipeline.yaml"
+$env:TRIGGER_TIME = (Get-Date).ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ssZ")
+$env:POSTGRES_HOST = "localhost"
+$env:POSTGRES_PORT = 45432
+$env:POSTGRES_USERNAME = "postgres"
+$env:POSTGRES_PASSWORD = "postgres"
+$env:POSTGRES_DATABASE = "sre_metrics"
+
+export PIPELINE_CONFIG_PATH="/mnt/c/Users/ASUS/Projects/promql-cronjob-runner/tests/sandbox_prometheus_query_pipeline.yaml"
+export TRIGGER_TIME=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+export POSTGRES_HOST="localhost"
+export POSTGRES_PORT=45432
+export POSTGRES_USERNAME="postgres"
+export POSTGRES_PASSWORD="postgres"
+export POSTGRES_DATABASE="sre_metrics"

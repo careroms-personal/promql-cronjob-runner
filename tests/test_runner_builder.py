@@ -171,6 +171,10 @@ class TestBuildRunnerServer:
     result = _build_runner_server(server_cfg)
     assert result.url == "http://localhost:9090"
 
+  def test_api(self, server_cfg):
+    result = _build_runner_server(server_cfg)
+    assert result.api == "api/v1"
+
   def test_timeout(self, server_cfg):
     result = _build_runner_server(server_cfg)
     assert result.timeout == 30
