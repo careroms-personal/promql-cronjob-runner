@@ -1,0 +1,21 @@
+image:
+  repository: promql-cronjob-runner
+  tag: latest
+  pullPolicy: IfNotPresent
+
+schedule: "0 * * * *"
+successfulJobsHistoryLimit: 3
+failedJobsHistoryLimit: 3
+
+resources: {}
+
+db:
+  host: "localhost"
+  port: 5432
+  name: "sre_metrics"
+  username: "postgres"
+  password: "postgres"
+
+pipelineConfig:
+  servers: []
+  pipelines: []
